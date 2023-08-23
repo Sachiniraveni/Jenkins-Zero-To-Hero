@@ -10,14 +10,17 @@ spec:
     repoURL: https://github.com/Sachiniraveni/Jenkins-Zero-To-Hero.git
     targetRevision: HEAD
     path: java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests
+    ignore:
+      - hpa.yml  # Add the file name you want to ignore here
   destination: 
     server: https://kubernetes.default.svc
     namespace: default
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
 
     automated:
       selfHeal: true
       prune: true
+
