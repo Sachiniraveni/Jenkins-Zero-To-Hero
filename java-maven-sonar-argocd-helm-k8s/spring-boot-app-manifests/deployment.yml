@@ -6,6 +6,11 @@ metadata:
     app: spring-boot-app
 spec:
   replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: spring-boot-app
@@ -19,3 +24,6 @@ spec:
         image: sachin13579/ultimate-cicd:40
         ports:
         - containerPort: 8080
+
+
+---
